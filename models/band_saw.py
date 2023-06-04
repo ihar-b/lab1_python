@@ -1,7 +1,7 @@
 """
 class file band saw
 """
-from models.Saw import Saw
+from models.saw import Saw
 
 
 class BandSaw(Saw):

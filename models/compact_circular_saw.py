@@ -1,7 +1,7 @@
 """
 class file of a compact circular saw
 """
-from models.Saw import Saw
+from models.saw import Saw
 
 
 class CompactCircularSaw(Saw):

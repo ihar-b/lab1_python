@@ -1,7 +1,9 @@
 """
 file of chainsaw class
 """
-from models.Saw import Saw
+from models.saw import Saw
+from decorators.logging_1 import logged
+from exeptions.exeption_1 import CustomException
 
 
 class Chainsaw(Saw):
@@ -26,13 +28,13 @@ class Chainsaw(Saw):
         """
         self.is_working = False
 
+    @logged(CustomException, "console")
     def cut_wood(self, length):
         """
         Method to calculate the length of cut wood
         """
         if not self.is_working:
-            print("Chainsaw is not working. Start the chainsaw first.")
-            return
+            raise CustomException("Chainsaw is not working. Start the chainsaw first.")
 
         fuel_consumption = length / 10
         if fuel_consumption > self.runtime:

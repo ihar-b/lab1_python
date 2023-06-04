@@ -21,5 +21,8 @@ class Saw(ABC):
         Abstract method to get the remaining work time of the saw
         """
 
+    def __getitem__(self, item):
+        return type(item), item
+
     def __str__(self):
         return f"{self.brand} (power: {self.power}W, runtime: {self.runtime} hours, is working: {self.is_working})"

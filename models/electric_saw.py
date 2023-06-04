@@ -1,7 +1,7 @@
 """
 Class file of the electric saw
 """
-from models.Saw import Saw
+from models.saw import Saw
 
 
 class ElectricSaw(Saw):
