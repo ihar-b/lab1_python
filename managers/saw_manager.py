@@ -41,16 +41,16 @@ class SawManager:
     def get_power(self):
         return [x.power for x in self.saws]
 
-    def enumerate(self):
-        return [(index, obj) for index, obj in enumerate(self.saws)]
+    def enumerate__(self):
+        return enumerate(self.saws)
 
-    def zip(self):
+    def zip__(self):
         return list(zip(self.saws, self.get_power()))
 
     def to_dict(self, data_type):
         return [{key: value for (key, value) in x.__dict__.items() if type(value) is data_type} for x in self.saws]
 
-    def validation(self, validate):
+    def is_all_or_any_conditions(self, validate):
         return {
             'all': all(map(validate, self.saws)),
             'any': any(map(validate, self.saws)),
@@ -86,8 +86,14 @@ if __name__ == '__main__':
         print(saw)
 
     print(saw_manager.get_power())
-    enumeration = saw_manager.enumerate()
-    print(enumeration)
-    print(saw_manager.zip())
+    enumeration = list(saw_manager.enumerate__())
+    for i, saw in enumeration:
+        print(i, saw)
+    zipped = list(saw_manager.zip__())
+    for i, saw in zipped:
+        print(i, saw)
     print(saw_manager.to_dict(int))
-    print(saw_manager.validation(lambda x: x.power > 1000))
+    print(saw_manager.is_all_or_any_conditions(lambda x: x.power > 1000))
+    ch = Chainsaw("superCh", 1500, 10.0, 15, 5)
+    ch.cut_wood(10)
+
